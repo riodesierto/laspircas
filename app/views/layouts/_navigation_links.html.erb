@@ -1,2 +1,6 @@
 <%# add navigation links to this file %>
-<li><%= link_to 'About', page_path('about') %></li>
+<li><%= link_to 'Info', page_path('about') %></li>
+<li><%= link_to 'Visitas', visitors_path %></li>
+<li><%= link_to 'Residentes', residents_path %></li>
+
+<%= render 'layouts/nav_links_for_auth' %>

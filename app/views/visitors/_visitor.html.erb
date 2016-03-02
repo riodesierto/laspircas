@@ -1,0 +1,6 @@
+  <%= link_to visitor.name, visitor %>
+  <p>Nombre: <%= visitor.name if visitor.name %>
+	RUT: <%= visitor.rut if visitor.rut %>
+	Hora: <%= visitor.created_at if visitor.created_at %></p>
+	Se dirige a: <%= visitor.resident.address if visitor.resident %>
+</br>

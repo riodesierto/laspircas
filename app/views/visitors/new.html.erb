@@ -1,0 +1,12 @@
+<%= link_to("Volver a los Ambitos", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="ambits new">
+	<h2>Crear Residente</h2>
+
+	<%= form_for(:resident, :url => {:action => 'create'}) do |f| %>
+		<%= render(:partial => "form", :locals => {:f => f}) %>
+		<div class="form-buttons">
+			<%= submit_tag("Crear Residente") %>
+		</div>
+	<% end %>
+</div>
