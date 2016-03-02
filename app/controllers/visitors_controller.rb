@@ -1,7 +1,6 @@
 class VisitorsController < ApplicationController
 	before_action :authenticate_user!
   before_action :admin_only, :except => :show
-  before_action :find_resident
 
   def index
     @visitors = Visitor.sorted
@@ -60,7 +59,7 @@ class VisitorsController < ApplicationController
     end
 
     def visitor_params
-      params.require(:visitor).permit(:resident_id, :name, :rut, :tag_value)
+      params.require(:visitor).permit(:resident_id, :name, :rut, :patente)
     end
 
 
