@@ -1,6 +1,11 @@
-  <%= link_to visitor.name, visitor %>
-  <p>Nombre: <%= visitor.name if visitor.name %>
-	RUT: <%= visitor.rut if visitor.rut %>
-	Hora: <%= visitor.created_at if visitor.created_at %></p>
-	Se dirige a: <%= visitor.resident.address if visitor.resident %>
-</br>
+<td><% if visitor.name %>
+  		<%= visitor.name %>
+  	<% else %>
+  		<%= link_to "Ingresar Nombre", edit_visitor_path(:id => visitor.id) %>
+  	<% end %>
+</td>
+
+<td><%= visitor.rut if visitor.rut %> </td>
+<td><%= visitor.created_at.strftime("%F %H:%M:%S") if visitor.created_at %> </td>
+<td><%= visitor.patente if visitor.patente %></td>
+<td><%= visitor.resident.address if visitor.resident %></td>

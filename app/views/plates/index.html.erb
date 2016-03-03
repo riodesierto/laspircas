@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <h3>Visitas</h3>
+    <h3>Residentes</h3>
     <div>
       <table class="table">
         <thead>
-          <th><h6>Nombre</h6></th>
-          <th><h6>RUT</h6></th>
-          <th><h6>Acceso</h6></th>
+          <th><h6>Dirección</h6></th>
+          <th><h6>TAG</h6></th>
           <th><h6>Patente</h6></th>
-          <th><h6>Se dirige a</h6></th>
+          <th><h6>Antena</h6></th>
+          <th><h6>Archivo</h6></th>
         </thead>
         <tbody>
-          <% @visitors.each do |visitor| %>
+          <% @plates.each do |plate| %>
             <tr>
-              <%= render visitor %>
+              <%= render plate %>
             </tr>
           <% end %>
         </tbody>

@@ -1,0 +1,5 @@
+<td><%= Resident.find(Tag.find_by_tag_value(Plate.first.tag_value).resident_id).address if plate.tag_value %> </td>
+<td><%= plate.tag_value if plate.tag_value %> </td>
+<td><%= plate.plate if plate.plate %> </td>
+<td><%= plate.antenna if plate.antenna %></td>
+<td><%= plate.filename if plate.filename %></td>

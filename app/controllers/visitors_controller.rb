@@ -33,7 +33,7 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.find(params[:id])
     if @visitor.update_attributes(visitor_params)
       flash[:notice] = "visitore modificado satisfactoriamente."
-      redirect_to(:action => 'show', :id => @visitor.id)
+      redirect_to(:action => 'index')
     else
       render('edit')
     end
