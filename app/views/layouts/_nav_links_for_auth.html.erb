@@ -9,7 +9,6 @@
 <!--
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 -->
-  <li><%= link_to 'Registrarse', new_user_registration_path %></li>
 
 <% end %>
 <% if user_signed_in? %>
@@ -18,5 +17,7 @@
     <li><%= link_to 'Users', users_path %></li>
 -->
     <li><%= link_to 'Usuarios', users_path %></li>
+    <li><%= link_to 'Registrar', new_user_registration_path %></li>
+
   <% end %>
 <% end %>

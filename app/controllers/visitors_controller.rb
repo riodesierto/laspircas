@@ -1,6 +1,6 @@
 class VisitorsController < ApplicationController
 	before_action :authenticate_user!
-  before_action :admin_only, :except => :show
+  before_action :admin_only, except: [:index, :edit, :update]
 
   def index
     @visitors = Visitor.sorted
