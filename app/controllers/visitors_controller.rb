@@ -3,7 +3,7 @@ class VisitorsController < ApplicationController
   before_action :admin_only, except: [:index, :edit, :update]
 
   def index
-    @visitors = Visitor.sorted
+    @visitors = Visitor.sorted.paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
@@ -27,10 +27,12 @@ class VisitorsController < ApplicationController
 
   def edit
     @visitor = Visitor.find(params[:id])
+    @visitor.autorized_by = current_user.name
   end
 
   def update
     @visitor = Visitor.find(params[:id])
+    @visitor.autorized_by = current_user.name
     if @visitor.update_attributes(visitor_params)
       flash[:notice] = "visitore modificado satisfactoriamente."
       redirect_to(:action => 'index')
@@ -50,6 +52,14 @@ class VisitorsController < ApplicationController
     redirect_to(:action => 'index')
   end
 
+  def busqueda
+    
+  end
+
+  def results
+    
+  end
+
   private
 
     def admin_only
@@ -59,7 +69,7 @@ class VisitorsController < ApplicationController
     end
 
     def visitor_params
-      params.require(:visitor).permit(:resident_id, :name, :rut, :patente)
+      params.require(:visitor).permit(:resident_id, :name, :rut, :patente, :autorized_by, :search)
     end
 
 

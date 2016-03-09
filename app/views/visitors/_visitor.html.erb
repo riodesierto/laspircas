@@ -7,5 +7,16 @@
 
 <td><%= visitor.rut if visitor.rut %> </td>
 <td><%= visitor.created_at.strftime("%F %H:%M:%S") if visitor.created_at %> </td>
-<td><%= visitor.patente if visitor.patente %></td>
+<td>
+	<% if visitor.patente %>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm">
+		<% if visitor.patente %>
+			<%= visitor.patente %>
+		<% else %>
+			Ver patente
+		<% end %>
+		</button>
+	<% end %>
+</td>
 <td><%= visitor.resident.address if visitor.resident %></td>
+<td><%= visitor.autorized_by if visitor.autorized_by %></td>

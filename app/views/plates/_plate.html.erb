@@ -1,6 +1,27 @@
 <td><%= Resident.find(Tag.find_by_tag_value(plate.tag_value).resident_id).address if plate.tag_value %> </td>
 <td><%= plate.tag_value if plate.tag_value %> </td>
-<td><%= plate.plate if plate.plate %> </td>
+
+	<td>
+	<% if plate.filename %>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm">
+		<% if plate.plate %>
+			<%= plate.plate %>
+		<% else %>
+			Ver patente
+		<% end %>
+		</button>
+	<% end %>
+	</td>
+
 <td><%= plate.created_at.strftime("%F %H:%M:%S") if plate.created_at %> </td>
 <td><%= plate.antenna if plate.antenna %></td>
-<td><%= plate.filename if plate.filename %></td>
+
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= image_tag("#{plate.filename}") %>
+    </div>
+  </div>
+</div>

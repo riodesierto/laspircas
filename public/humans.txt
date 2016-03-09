@@ -3,10 +3,9 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Developer: Cristian Esparza
+  Contact: cristian@esparza.cl
+  Location: Santiago, Chile
 
 /* THANKS */
   Daniel Kehoe (@rails_apps) for the RailsApps project

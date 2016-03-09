@@ -1,0 +1,12 @@
+<%= link_to("Volver al listado de Visitas", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="visitas new">
+	<h2>Actualizar información de  Visita</h2>
+	<%= simple_form_for(:visitor, method: "put", :url => {:action => 'results'}) do |f| %>
+		<%= render(:partial => "form_date", :locals => {:f => f}) %>
+		<div class="form-buttons">
+			</br>
+			<%= submit_tag "Actualizar Información", :class => 'button-xs' %>
+		</div>
+	<% end %>
+</div>
