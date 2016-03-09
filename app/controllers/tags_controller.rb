@@ -1,4 +1,4 @@
-class tagsController < ApplicationController
+class TagsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
 
