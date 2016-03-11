@@ -5,15 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.delete_all
+# User.delete_all
 Resident.delete_all
 Tag.delete_all
-Visitor.delete_all
-Plate.delete_all
+# Visitor.delete_all
+# Plate.delete_all
 
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
-puts 'CREATED ADMIN PASS: ' << user.password
+# user = CreateAdminService.new.call
+# puts 'CREATED ADMIN USER: ' << user.email
+# puts 'CREATED ADMIN PASS: ' << user.password
 
 Resident.create!(:address => "El Prado 4098")
 puts "Residente El Prado 4098 creado"

@@ -1,6 +1,7 @@
 
 
 <table summary="Visitor form fields">
+<!--
 	<tr>
 		<th><%= f.label(:name, "Nombre ") %></th>
 		<td><%= f.text_field(:name) %></td>
@@ -9,6 +10,7 @@
 		<th><%= f.label(:rut, "RUT ") %></th>
 		<td><%= f.text_field(:rut) %></td>
 	</tr>
+-->
 	<tr>
 		<th><%= f.label(:resident_id, "Se dirige a ") %></th>
 		<td><%= f.select(:resident_id, Resident.all.collect {|s| [s.address, s.id]}, {include_blank: true}) %></td>
