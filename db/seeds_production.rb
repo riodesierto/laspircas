@@ -8,8 +8,8 @@
 # User.delete_all
 Resident.delete_all
 Tag.delete_all
-# Visitor.delete_all
-# Plate.delete_all
+Visitor.delete_all
+Plate.delete_all
 
 # user = CreateAdminService.new.call
 # puts 'CREATED ADMIN USER: ' << user.email

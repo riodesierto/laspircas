@@ -1,3 +1,5 @@
+<!--
+
 <td><% if visitor.name %>
   		<%= visitor.name %>
   	<% else %>
@@ -6,6 +8,8 @@
 </td>
 
 <td><%= visitor.rut if visitor.rut %> </td>
+
+-->
 <td><%= visitor.created_at.strftime("%F %H:%M:%S") if visitor.created_at %> </td>
 <td>
 	<% if visitor.patente %>
@@ -18,5 +22,22 @@
 		</button>
 	<% end %>
 </td>
-<td><%= visitor.resident.address if visitor.resident %></td>
+<td>
+	<% if visitor.resident %>
+		<%= visitor.resident.address %>
+	<% else %>
+		 <%= link_to "Ingresar Casa a la que se dirige", edit_visitor_path(:id => visitor.id) %>
+	<% end %>
 <td><%= visitor.autorized_by if visitor.autorized_by %></td>
+
+<!-- Pendiente migrar
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= image_tag("#{visitor.patente}") %> --cambiar patente a filename
+    </div>
+  </div>
+</div>
+
+-->

@@ -1,4 +1,6 @@
 <h3>Visitas</h3>
+<!--
 <p>Nombre: <%= @visitor.name if @visitor.name %></p>
 <p>RUT: <%= @visitor.rut if @visitor.rut %></p>
-<p>Hora: <%= @visitor.created_at if @visitor.created_at %></p>
+-->
+<p>Hora: <%= @visitor.created_at.strftime("%F %H:%M:%S") if @visitor.created_at %></p>

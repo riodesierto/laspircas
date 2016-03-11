@@ -18,7 +18,7 @@ class VisitorsController < ApplicationController
   def create
     @visitor = Visitor.new(visitor_params)
     if @visitor.save
-      flash[:notice] = "visitore creado satisfactoriamente."
+      flash[:notice] = "Información de Visita creada satisfactoriamente."
       redirect_to(:action => 'index')
     else
       render('new')
@@ -34,7 +34,7 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.find(params[:id])
     @visitor.autorized_by = current_user.name
     if @visitor.update_attributes(visitor_params)
-      flash[:notice] = "visitore modificado satisfactoriamente."
+      flash[:notice] = "Información de Visita modificada satisfactoriamente."
       redirect_to(:action => 'index')
     else
       render('edit')
@@ -48,7 +48,7 @@ class VisitorsController < ApplicationController
 
   def destroy
     visitor = Visitor.find(params[:id]).destroy
-    flash[:notice] = "visitore '#{visitor.name}' eliminado satisfactoriamente."
+    flash[:notice] = "Información de Visita '#{visitor.patente}' eliminada satisfactoriamente."
     redirect_to(:action => 'index')
   end
 

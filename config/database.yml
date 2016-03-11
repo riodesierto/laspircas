@@ -15,7 +15,7 @@ development:
   database: laspircas_development
   pool: 5
   username: laspircas
-  password:
+  password: laspircas
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: laspircas_test
   pool: 5
   username: laspircas
-  password:
+  password: laspircas
   host: localhost
 
 production:
@@ -38,5 +38,5 @@ production:
   database: laspircas_production
   pool: 5
   username: laspircas
-  password:
+  password: laspircas
   host: localhost
