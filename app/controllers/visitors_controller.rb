@@ -83,6 +83,7 @@ class VisitorsController < ApplicationController
     end
 
     def save_image
+      #@archivo = "#{Rails.root}/public/plates/#{@visitor.id}.jpg"
       @archivo = "public/plates/#{@visitor.id}.jpg"
       if @visitor.antenna == 1
         IO.copy_stream(open('http://servidorlaspircas.no-ip.info:84/jpg/image.jpg'), @archivo)
