@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304150515) do
+ActiveRecord::Schema.define(version: 20160314233642) do
 
   create_table "plates", force: true do |t|
     t.string   "tag_value"
@@ -70,12 +70,12 @@ ActiveRecord::Schema.define(version: 20160304150515) do
 
   create_table "visitors", force: true do |t|
     t.integer  "resident_id"
-    t.string   "name"
-    t.string   "rut"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "patente"
     t.string   "autorized_by"
+    t.integer  "antenna"
+    t.string   "filename"
   end
 
   add_index "visitors", ["resident_id"], name: "index_visitors_on_resident_id", using: :btree

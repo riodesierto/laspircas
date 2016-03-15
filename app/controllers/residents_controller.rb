@@ -3,7 +3,7 @@ class ResidentsController < ApplicationController
   before_action :admin_only, :except => :show
 
   def index
-    @residents = Resident.all
+    @residents = Resident.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

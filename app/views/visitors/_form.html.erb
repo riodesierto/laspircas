@@ -1,16 +1,6 @@
 
 
 <table summary="Visitor form fields">
-<!--
-	<tr>
-		<th><%= f.label(:name, "Nombre ") %></th>
-		<td><%= f.text_field(:name) %></td>
-	</tr>
-	<tr>
-		<th><%= f.label(:rut, "RUT ") %></th>
-		<td><%= f.text_field(:rut) %></td>
-	</tr>
--->
 	<tr>
 		<th><%= f.label(:patente, "Patente ") %></th>
 		<td><%= f.text_field(:patente, value: "#{@visitor.patente}") %></td>

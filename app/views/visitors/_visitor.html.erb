@@ -1,43 +1,42 @@
-<!--
+<td><%= visitor.created_at.strftime("%F %H:%M:%S") if visitor.created_at %></td>
 
-<td><% if visitor.name %>
-  		<%= visitor.name %>
-  	<% else %>
-  		<%= link_to "Ingresar Nombre", edit_visitor_path(:id => visitor.id) %>
-  	<% end %>
-</td>
-
-<td><%= visitor.rut if visitor.rut %> </td>
-
--->
-<td><%= visitor.created_at.strftime("%F %H:%M:%S") if visitor.created_at %> </td>
 <td>
-	<% if visitor.patente %>
-		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm">
-		<% if visitor.patente %>
-			<%= visitor.patente %>
-		<% else %>
-			Ver patente
-		<% end %>
+	<% if visitor.filename %>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm-<%= visitor.id %>">
+			<% if visitor.patente %>
+				<%= visitor.patente %>
+			<% else %>
+				Ver patente
+			<% end %>
 		</button>
 	<% end %>
 </td>
+
+<td><% @acceso = case visitor.antenna 
+			 when 1 then "Entrada Caseta Norte"
+			 when 2 then "Salida Caseta Norte"
+			 when 3 then "Entrada Caseta Sur"
+			 when 4 then "Salida Caseta Sur"
+			 else "Sin Información"
+		end %>
+		<%= "#{@acceso}" %>
+</td>
+
 <td>
 	<% if visitor.resident %>
 		<%= visitor.resident.address %>
 	<% else %>
 		 <%= link_to "Ingresar Casa a la que se dirige", edit_visitor_path(:id => visitor.id) %>
 	<% end %>
+</td>
 <td><%= visitor.autorized_by if visitor.autorized_by %></td>
 
-<!-- Pendiente migrar
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal fade bs-example-modal-sm-<%= visitor.id %>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
-      <%= image_tag("#{visitor.patente}") %> --cambiar patente a filename
+      <%= image_tag("#{visitor.filename}") %>
     </div>
   </div>
 </div>
 
--->

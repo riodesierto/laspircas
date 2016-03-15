@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_action :admin_only, :except => :show
 
   def index
-    @tags = Tag.all
+    @tags = Tag.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

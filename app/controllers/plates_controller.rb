@@ -3,7 +3,7 @@ class PlatesController < ApplicationController
   before_action :admin_only, :except => :index
 
   def index
-    @plates = Plate.all
+    @plates = Plate.sorted.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show

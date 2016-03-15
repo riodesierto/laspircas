@@ -3,7 +3,7 @@ class VisitorsController < ApplicationController
   before_action :admin_only, except: [:index, :edit, :update]
 
   def index
-    @visitors = Visitor.sorted.paginate(:page => params[:page], :per_page => 5)
+    @visitors = Visitor.sorted.paginate(:page => params[:page], :per_page => 20)
   end
 
   def show
@@ -25,14 +25,17 @@ class VisitorsController < ApplicationController
     end
   end
 
-  def edit
+  def edit   
     @visitor = Visitor.find(params[:id])
+    save_image
+    @visitor.filename = "/plates/#{@visitor.id}.jpg"
     @visitor.autorized_by = current_user.name
   end
 
   def update
     @visitor = Visitor.find(params[:id])
     @visitor.autorized_by = current_user.name
+    @visitor.filename = "/plates/#{@visitor.id}.jpg"
     if @visitor.update_attributes(visitor_params)
       flash[:notice] = "Información de Visita modificada satisfactoriamente."
       redirect_to(:action => 'index')
@@ -69,13 +72,22 @@ class VisitorsController < ApplicationController
     end
 
     def visitor_params
-      params.require(:visitor).permit(:resident_id, :name, :rut, :patente, :autorized_by, :search)
+      params.require(:visitor).permit(:resident_id, :patente, :autorized_by, :filename)
     end
 
 
     def find_resident
       if params[:resident_id]
         @resident = Resident.find(params[:resident_id])
+      end
+    end
+
+    def save_image
+      @archivo = "public/plates/#{@visitor.id}.jpg"
+      if @visitor.antenna == 1
+        IO.copy_stream(open('http://servidorlaspircas.no-ip.info:84/jpg/image.jpg'), @archivo)
+      else
+        IO.copy_stream(open('http://servidorlaspircas.no-ip.info:85/jpg/image.jpg'), @archivo)
       end
     end
 	

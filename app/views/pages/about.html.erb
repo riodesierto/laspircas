@@ -3,21 +3,5 @@
 <p>
 Sistema de ingreso Condominio Las Pircas
 </p>
-
-
-Falta: </br>
-Agregar Usuario que autorizo visita</br>
-Agregar busqueda por fecha</br>
-Ver Foto patente
-Terminar formulario de Visitas</br>
-Afinar paginación</br>
-
-<td><%= link_to "Patente 01", "/plates/1.jpg" %></td>
-
-<!--
-<p>
-This web application was created with
-<%= link_to('Rails Composer', 'http://railsapps.github.io/rails-composer/') %>
-from the <%= link_to('RailsApps project', 'http://railsapps.github.io/') %>.
-</p>
--->
+<% @comando = %x[ls]%>
+<%= @comando %>

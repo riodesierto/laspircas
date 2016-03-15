@@ -2,7 +2,17 @@
 
 <div class="visitas new">
 	<h2>Actualizar información de  Visita</h2>
-	<h3>Patente <%= @visitor.patente %></h3>
+	<h3>Patente <%= @visitor.patente %>
+		<% if @visitor.filename %>
+		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-sm">
+			<% if @visitor.patente %>
+				<%= @visitor.patente %>
+			<% else %>
+				Ver patente
+			<% end %>
+		</button>
+		<% end %>
+	</h3>
 	<%= form_for(:visitor, method: "patch", :url => {:action => 'update'}) do |f| %>
 		<%= render(:partial => "form", :locals => {:f => f}) %>
 		<div class="form-buttons">
@@ -10,4 +20,13 @@
 			<%= submit_tag "Actualizar Información", :class => 'button-xs' %>
 		</div>
 	<% end %>
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= image_tag("#{@visitor.filename}") %>
+    </div>
+  </div>
 </div>
