@@ -99,6 +99,7 @@ class VisitorsController < ApplicationController
           @placa = "ingresar patente"
         else
           @placa = @visitor.patente
+        end
       end
     end
 	
