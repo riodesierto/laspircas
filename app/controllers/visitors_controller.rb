@@ -22,6 +22,7 @@ class VisitorsController < ApplicationController
     if @visitor.save
       save_image
       getplate
+      @visitor.patente = @placa
       @visitor.filename = "/plates/#{@visitor.id}.jpg"
       @visitor.save
       flash[:notice] = "Información de Visita creada satisfactoriamente."
@@ -94,7 +95,10 @@ class VisitorsController < ApplicationController
     def getplate
       @placa = %x[/home/pedro/impinj_ltk/bin/getplate #{@visitor.id} #{Rails.root}/public/plates/#{@visitor.id}.jpg]
       if @placa.blank?
-        @placa = "ingresar patente"
+        if @visitor.patente.nil
+          @placa = "ingresar patente"
+        else
+          @placa = @visitor.patente
       end
     end
 	
