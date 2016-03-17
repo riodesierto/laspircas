@@ -29,6 +29,8 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.find(params[:id])
     save_image
     @visitor.filename = "/plates/#{@visitor.id}.jpg"
+    getplate
+    @visitor.patente = @placa
     @visitor.autorized_by = current_user.name
   end
 
@@ -83,12 +85,19 @@ class VisitorsController < ApplicationController
     end
 
     def save_image
-      #@archivo = "#{Rails.root}/public/plates/#{@visitor.id}.jpg"
-      @archivo = "public/plates/#{@visitor.id}.jpg"
+      @archivo = "#{Rails.root}/public/plates/#{@visitor.id}.jpg"
+      #@archivo = "public/plates/#{@visitor.id}.jpg"
       if @visitor.antenna == 1
         IO.copy_stream(open('http://servidorlaspircas.no-ip.info:84/jpg/image.jpg'), @archivo)
       else
         IO.copy_stream(open('http://servidorlaspircas.no-ip.info:85/jpg/image.jpg'), @archivo)
+      end
+    end
+
+    def getplate
+      @placa = %x[/home/pedro/impinj_ltk/bin/getplate #{@visitor.id} #{Rails.root}/public/plates/#{@visitor.id}.jpg]
+      if @placa.blank?
+        @placa = "ingresar patente"
       end
     end
 	
