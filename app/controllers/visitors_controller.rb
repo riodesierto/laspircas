@@ -20,6 +20,7 @@ class VisitorsController < ApplicationController
     @visitor.autorized_by = current_user.name
     save_image
     if @visitor.save
+      @visitor = Visitor.find(@visitor.id)
       save_image
       @visitor.filename = "/plates/#{@visitor.id}.jpg"
       @visitor.save
@@ -93,10 +94,10 @@ class VisitorsController < ApplicationController
     def getplate
       @placa = %x[/home/pedro/impinj_ltk/bin/getplate #{@visitor.id} #{Rails.root}/public/plates/#{@visitor.id}.jpg]
       if @placa.blank?
-        if @visitor.patente.nil
-          @placa = "ingresar patente"
-        else
+        if @visitor.patente
           @placa = @visitor.patente
+        else
+          @placa = "No ingresada"
         end
       end
     end
