@@ -12,18 +12,18 @@ class VisitorsController < ApplicationController
 
   def new
     @visitor = Visitor.new
-    getplate
-    @visitor.patente = @placa
     @visitor.autorized_by = current_user.name
-    @visitor.filename = "/plates/#{@visitor.id}.jpg"
   end
 
   def create
     @visitor = Visitor.new(visitor_params)
-    @visitor.filename = "/plates/#{@visitor.id}.jpg"
     @visitor.autorized_by = current_user.name
     save_image
     if @visitor.save
+      save_image
+      getplate
+      @visitor.filename = "/plates/#{@visitor.id}.jpg"
+      @visitor.save
       flash[:notice] = "Información de Visita creada satisfactoriamente."
       redirect_to(:action => 'index')
     else
