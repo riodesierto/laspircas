@@ -21,8 +21,6 @@ class VisitorsController < ApplicationController
     save_image
     if @visitor.save
       save_image
-      getplate
-      @visitor.patente = @placa
       @visitor.filename = "/plates/#{@visitor.id}.jpg"
       @visitor.save
       flash[:notice] = "Información de Visita creada satisfactoriamente."
