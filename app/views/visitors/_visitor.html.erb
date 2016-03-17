@@ -5,7 +5,7 @@
 			<% if visitor.patente %>
 				<%= visitor.patente %>
 			<% else %>
-				Ingresar Patente
+				<%= link_to "Ingresar patente", edit_visitor_path(:id => visitor.id) %>
 			<% end %>
 		</button>
 </td>
