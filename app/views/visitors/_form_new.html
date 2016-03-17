@@ -1,0 +1,21 @@
+
+
+<table summary="Visitor form fields">
+	<tr>
+		<th><%= f.label(:patente, "Patente ") %></th>
+		<td><%= f.text_field(:patente, value: "#{@visitor.patente}") %></td>
+	</tr>
+	<tr>
+		<th><%= f.label(:resident_id, "Se dirige a ") %></th>
+		<td><%= f.select(:resident_id, Resident.all.collect {|s| [s.address, s.id]}, {include_blank: true}) %></td>
+	</tr>
+		<tr>
+		<th><%= f.label(:antenna, "Acceso") %></th>
+		<td><%= f.select(:antenna) do %>
+  				<% [['Entrada Caseta Norte', 1], ['Entrada Caseta Sur', 3]].each do |c| -%>
+    			<%= content_tag(:option, c.first, value: c.last) %>
+  			<% end %>
+		</td>
+	</tr>
+<% end %>
+</table>

@@ -12,11 +12,17 @@ class VisitorsController < ApplicationController
 
   def new
     @visitor = Visitor.new
-
+    getplate
+    @visitor.patente = @placa
+    @visitor.autorized_by = current_user.name
+    @visitor.filename = "/plates/#{@visitor.id}.jpg"
   end
 
   def create
     @visitor = Visitor.new(visitor_params)
+    @visitor.filename = "/plates/#{@visitor.id}.jpg"
+    @visitor.autorized_by = current_user.name
+    save_image
     if @visitor.save
       flash[:notice] = "Información de Visita creada satisfactoriamente."
       redirect_to(:action => 'index')
@@ -30,7 +36,6 @@ class VisitorsController < ApplicationController
     save_image
     @visitor.filename = "/plates/#{@visitor.id}.jpg"
     getplate
-    @visitor.patente = @placa
     @visitor.autorized_by = current_user.name
   end
 
@@ -57,14 +62,6 @@ class VisitorsController < ApplicationController
     redirect_to(:action => 'index')
   end
 
-  def busqueda
-    
-  end
-
-  def results
-    
-  end
-
   private
 
     def admin_only
@@ -74,7 +71,7 @@ class VisitorsController < ApplicationController
     end
 
     def visitor_params
-      params.require(:visitor).permit(:resident_id, :patente, :autorized_by, :filename)
+      params.require(:visitor).permit(:resident_id, :patente, :autorized_by, :filename, :antenna)
     end
 
 
@@ -88,9 +85,9 @@ class VisitorsController < ApplicationController
       @archivo = "#{Rails.root}/public/plates/#{@visitor.id}.jpg"
       #@archivo = "public/plates/#{@visitor.id}.jpg"
       if @visitor.antenna == 1
-        IO.copy_stream(open('http://servidorlaspircas.no-ip.info:84/jpg/image.jpg'), @archivo)
-      else
         IO.copy_stream(open('http://servidorlaspircas.no-ip.info:85/jpg/image.jpg'), @archivo)
+      else
+        IO.copy_stream(open('http://servidorlaspircas.no-ip.info:84/jpg/image.jpg'), @archivo)
       end
     end
 

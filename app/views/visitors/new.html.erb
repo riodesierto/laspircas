@@ -1,12 +1,12 @@
-<%= link_to("Volver a los Ambitos", {:action => 'index'}, :class => 'back-link') %>
+<%= link_to("Volver a las visitas", {:action => 'index'}, :class => 'back-link') %>
 
-<div class="ambits new">
-	<h2>Crear Residente</h2>
+<div class="visitor new">
+	<h2>Crear Visita</h2>
 
-	<%= form_for(:resident, :url => {:action => 'create'}) do |f| %>
-		<%= render(:partial => "form", :locals => {:f => f}) %>
+	<%= form_for(:visitor, :url => {:action => 'create'}) do |f| %>
+		<%= render(:partial => "form_new", :locals => {:f => f}) %>
 		<div class="form-buttons">
-			<%= submit_tag("Crear Residente") %>
+			<%= submit_tag "Ingresar información de visita", :class => 'button-xs' %>
 		</div>
 	<% end %>
 </div>
